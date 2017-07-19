@@ -28,7 +28,7 @@ module TalentLMS
 
     def method_missing(sym, *args, &block)
       url = route_for_method(sym.to_s, *args)
-      response = HTTP.with(@auth_header).get(url)
+      response = HTTP.headers(@auth_header).get(url)
       JSON.parse(response)
     end
   end
